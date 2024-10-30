@@ -75,12 +75,15 @@ const OrderHistory = () => {
     const displayButton = () => {
         const buttons = [];
         console.log()
+        let startPage = 0
+        page <= 2 ? startPage = 1 : startPage = page - 1
+        if(startPage + 3 > numberOfPage) startPage = numberOfPage - 3;
         if(numberOfPage > 4){
-            for (let i = 1; i <= numberOfPage; i++) {
+            for (let i = startPage; i <= numberOfPage; i++) {
                 buttons.push(
                     <button className={page === i ? 'active' : ''} key={i} onClick={() => handleChangePage(i)}> {i} </button>
                 );
-                if(i + 1 === 4){
+                if(i === startPage + 2 && startPage + 3 < numberOfPage){
                     buttons.push(
                         <button disabled={true}> ... </button>
                     );
