@@ -6,6 +6,7 @@ class Order extends Component{
         super(props);
         this.state = {
             time: props.data.time,
+            status: props.data.status,
             items: props.data.items,
             totalAmount: props.data.totalAmount,
             paymentMethod: props.data.paymentMethod,
@@ -28,6 +29,7 @@ class Order extends Component{
         return(
             <div className = 'container'>
                 <p className = 'time-display'>{this.formatTime(this.state.time)}</p>
+                <p className = 'status-display'>Status: {this.state.status}</p>
                 <div className = 'items-display'>
                     {this.state.items.map((item, index) => (
                         <span>{item} {index !== (this.state.items.length - 1)? ', ' : ''}</span>
